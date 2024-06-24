@@ -1,4 +1,7 @@
-﻿Thread primaryThread = Thread.CurrentThread;
+﻿// Отримуємо інформацію про поточний потік
+Thread primaryThread = Thread.CurrentThread;
+
+// Присвоюємо імя певинному потоку для цілей відлагодження
 primaryThread.Name = "Primary";
 
 Console.WriteLine(
@@ -8,12 +11,17 @@ Console.WriteLine(
 
 //Thread secondaryThread = new Thread(threadStart);
 
+// Створюємо та запускаємо вторинний потік
 Thread secondaryThread = new Thread(WriteInfo);
 secondaryThread.Name = "Secondary";
 secondaryThread.Start();
 
 WriteInfo();
 
+/// <summary>
+/// Статичний метод, який планується виконувати одночасно
+/// у головному (первинному) та у вторинному потоках.
+/// </summary>
 static void WriteInfo()
 {
     Thread thread = Thread.CurrentThread;
