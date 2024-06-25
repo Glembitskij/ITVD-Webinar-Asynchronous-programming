@@ -23,8 +23,6 @@ internal class Collection : IEnumerable
 
         private Person[] persons;
 
-        private Person person;
-
         public object Current
         {
             get
@@ -53,15 +51,13 @@ internal class Collection : IEnumerable
 
                 case 1:
                     state = -1;
-                    person = null;
+                    current = null;
                     position++;
                     break;
             }
             if (position < persons.Length)
             {
-                person = persons[position];
-                current = person;
-
+                current = persons[position];
                 state = 1;
                 return true;
             }
